@@ -1,0 +1,56 @@
+<!-- Styles -->
+<style>
+    #chartdiv {
+        width		: 100%;
+        height		: 500px;
+        font-size	: 11px;
+    }
+</style>
+<h2 align="center">Analysis of Top Retweets</h2>
+<!-- Resources -->
+<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="https://www.amcharts.com/lib/3/funnel.js"></script>
+<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+
+<!-- Chart code -->
+<script>
+    var chart = AmCharts.makeChart( "chartdiv", {
+        "type": "funnel",
+        "theme": "light",
+        "dataProvider": [ {
+            "title": "@jay45679",
+            "value": 100
+        }, {
+            "title": "@SunRisers",
+            "value": 61
+        }, {
+            "title": "@ajaxjoshi",
+            "value": 44
+        }, {
+            "title": "@RoflGandhi",
+            "value": 39
+        }, {
+            "title": "@KentROSystems",
+            "value": 30
+        },  ],
+        "balloon": {
+            "fixedPosition": true
+        },
+        "valueField": "value",
+        "titleField": "title",
+        "marginRight": 240,
+        "marginLeft": 50,
+        "startX": -500,
+        "rotate": true,
+        "labelPosition": "right",
+        "balloonText": "[[title]]: [[value]]n[[description]]",
+        "export": {
+            "enabled": true
+        }
+    } );
+</script>
+
+<!-- HTML -->
+<div id="chartdiv"></div>

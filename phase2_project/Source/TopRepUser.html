@@ -1,0 +1,54 @@
+<html xmlns="http://www.w3.org/1999/html">
+
+<script src="assets/js/jquery-3.1.1.min.js"></script>
+<style type="text/css">
+    table{
+        font-size:11px;
+        color:#333333;
+        border-width: 1px;
+        border-color: #666666;
+        border-collapse: collapse;
+    }
+    th {
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #666666;
+        background-color: #dedede;
+    }
+    td {
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #666666;
+        background-color: #ffffff;
+    }
+</style>
+
+</head>
+<body>
+        <div id="demo">
+            <script type="text/javascript" charset="utf-8">
+                $(document).ready(function()
+                {
+                    $.getJSON('data/TopRepUser.json', function(json) {
+                        document.write("<table>");
+                        document.write("<tr>");
+                        document.write("<th>"+"Top Replyed to User"+"</th>");
+                        document.write("<th>"+"Total Reply"+"</th>");
+
+                        for(var b = 0; b<json.length+1; b++) {
+                                document.write("<tr>");
+                                document.write("<td><a target='_blank' href="+"https://twitter.com/"+json[b].TopRepUser+">"+json[b].TopRepUser+"</a></td>");
+                                document.write("<td><p>"+json[b].total+"</p></td>");
+                                document.write("</tr>");
+                            }
+
+                        document.write("</table>");
+                    });
+                });
+
+            </script>
+        </div>
+</body>
+</html>

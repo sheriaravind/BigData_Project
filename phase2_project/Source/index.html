@@ -1,0 +1,293 @@
+<!DOCTYPE HTML>
+
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+	<head>
+		<title>Big Data Project</title>
+		<meta charset="utf-8" />
+		<script src="assets/js/Geo.js"></script>
+		<script src="//d3js.org/d3.v3.min.js"></script>
+		<script src="assets/js/jquery-3.1.1.min.js"></script>
+		<script sync src="https://platform.twitter.com/widgets.js"></script>
+		<script src="https://d3js.org/d3.v4.min.js"></script>
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/modules/exporting.js"></script>
+		<script src="assets/js/canvasjs.min.js"></script>
+		<script async defer
+				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYvvl2aliGZ_zFk_3pGeL2U7w3N9ttb0M&callback=initMap">
+		</script>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script src="assets/js/ie/html5shiv.js"></script>
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/ie8.css" />
+		<link rel="stylesheet" href="assets/css/ie9.css" />
+        <style>
+            #map {
+                height: 600px;
+                width: 85%;
+            }
+        </style>
+	</head>
+	<body bgcolor="black">
+
+		<!-- Header -->
+			<div id="header">
+				<div class="top">
+
+						<nav id="nav" align="center">
+
+							<ul>
+								<h3><font color="white">Visualizations</font></h3>
+								<li><a href="#Home" id="Home-link" class="skel-layers-ignoreHref">IPL #2K18</a></li>
+								<h4><li><a href="#Geo_Location" id="Geo_Location-link" class="skel-layers-ignoreHref">Geo Location</a></li>
+								<h4><li><a href="#Top_Retweet" id="Top Retweet" class="skel-layers-ignoreHref">Top Retweets</a></li>
+								<h4><li><a href="#Top_Languages" id="Top Languages" class="skel-layers-ignoreHref">Top Languages</a></li>
+									<h4><li><a href="#Top_Time_Zone" id="Top Time Zone" class="skel-layers-ignoreHref">Top Time Zone</a></li>
+										<h4><li><a href="#Top_Hashtags" id="Top Hashtags" class="skel-layers-ignoreHref">Trended Hashtags</a></li>
+											<h4><li><a href="#Time_Tweets" id="Time Tweets" class="skel-layers-ignoreHref">Time Based Tweets</a></li>
+												<h4><li><a href="#Source_Tweets" id="Source Tweets" class="skel-layers-ignoreHref">Tweeted From</a></li>
+													<h4><li><a href="#Content_Tweets" id="Content Tweets" class="skel-layers-ignoreHref">Trending Cricketers</a></li>
+														<h4><li><a href="#Verified_Accounts" id="Verified Accounts" class="skel-layers-ignoreHref">Verified Accounts</a></li>
+															<h4><li><a href="#Top_Retweets" id="Top Retweets" class="skel-layers-ignoreHref">Top Tweeted Users</a></li>
+
+							</ul>
+						</nav>
+
+
+				</div>
+
+			</div>
+
+		<!-- Main -->
+			<div id="main">
+
+				<!-- Home -->
+					<section id="Home">
+						<div class="container">
+							<h2>IPL #2k18</h2>
+ <p><font color="white">
+	 The 2018 season of the Indian Premier League, also known as IPL 11, is the current eleventh season of the IPL, a professional Twenty20 cricket league established by the BCCI in 2007. The season, which is being held from 7 April to 27 May, saw the return of the Chennai Super Kings and the Rajasthan Royals after serving two years of suspension for the involvement of their respective owners in the 2013 IPL betting case. Star Sports purchased the media rights at ₹16,347.5 crore ($2.55 billion) for five years starting from 2018
+ </font></p>
+
+
+						</div>
+					</section>
+
+				<!-- Geo_Location -->
+					<section id="Geo_Location" class="two">
+						<div class="container">
+							<header>
+								<h2 id="GeoCSS">Geo location</h2>
+							<p id="GeoCSS1">Using Google Map API.</p>
+							</header>
+							<div id="map" style="min-width: 310px; height: 500px; max-width: 800px; margin: 0 auto"></div>
+							<script>
+							var latarray = [];
+							var longarray = [];
+							var namearray = [];
+							var ScreenNAmeArray = [];
+							var counter = 0;
+							var map;
+
+							$.getJSON('geo.json', function(json) {
+
+							for (var i = 0; i < json.length; i++) {
+							counter=counter+1;
+							latarray[i]= parseFloat(json[i].latt);
+							longarray[i]= parseFloat(json[i].long);
+							namearray[i]= json[i].name;
+							ScreenNAmeArray[i]= json[i].screen_name;
+
+							}
+							});
+
+							$(document).ready(function() {
+							map = new GMaps({
+							el: '#map',
+							lat: 37.2582812,
+							lng: -104.6538703,
+							Zoom: 4
+							});
+							for (var i=0; i < counter ;i++){
+
+							map.addMarker({
+							lat: latarray[i],
+							lng: longarray[i],
+							title: namearray[i],
+							infoWindow:{
+							content: '<h3>User Name:<br/></h3><a target=_blank href=https://twitter.com/'+ScreenNameArray[i]+'>'+namearray[i]+'</a>'
+
+							}
+							});
+							}
+							});
+                            </script>
+						</div>
+
+					</section>
+
+
+				<!---- Top retweet----->
+
+				<section id="Top_Retweet" class="five">
+					<div class="container">
+
+
+						<header>
+							<h2>Top Retweet</h2>
+						</header>
+
+						<form action= "query2.html" target="_blank">
+							<input type="submit" value="Retweets"/>
+						</form>
+
+
+				</section>
+
+
+				<!-- Top languages -->
+				<section id="Top_Languages" class="two">
+					<div class="container">
+
+						<header>
+							<h2>Top Languages</h2>
+						</header>
+
+						<form action= "query3.html" target="_blank">
+							<input type="submit" value="Languages"/>
+						</form>
+
+
+					</div>
+
+
+				</section>
+
+
+				<!---- Timezones----->
+
+                        <section id="Top_Time_Zone" class="five">
+                            <div class="container">
+
+
+                            <header>
+                            <h2>IPL Tweets from Timezones</h2>
+                        </header>
+
+                        <form action= "query4.html" target="_blank">
+                            <input type="submit" value="Show Timezones" />
+                            </form>
+
+                            </div>
+                            </section>
+
+				<!---- Top_Hashtags----->
+				<section id="Top_Hashtags" class="two">
+					<div class="container">
+
+
+						<header>
+							<h2>Trended Hashtags</h2>
+						</header>
+
+						<form action= "query5.html" target="_blank">
+							<input type="submit" value="Show Hashtags" />
+						</form>
+
+                        </div>
+                        </section>
+
+				<!--Time based tweets -->
+				<section id="Time_Tweets" class="five">
+					<div class="container">
+
+
+						<header>
+							<h2>Time Based Tweets</h2>
+						</header>
+
+
+						<form action= "query6.html" target="_blank">
+							<input type="submit" value="Hourly Tweets" />
+						</form>
+
+					</div>
+				</section>
+
+				<section id="Source_Tweets" class="two">
+					<div class="container">
+
+
+						<header>
+							<h2>Source Tweets</h2>
+						</header>
+
+
+						<form action= "query7.html" target="_blank">
+							<input type="submit" value="Source Tweets" />
+						</form>
+
+					</div>
+				</section>
+
+				<section id="Content_Tweets" class="five">
+					<div class="container">
+
+
+						<header>
+							<h2>Trending cricketers</h2>
+						</header>
+
+
+						<form action= "query8.html" target="_blank">
+							<input type="submit" value="Content Tweets" />
+						</form>
+
+					</div>
+				</section>
+
+				<section id="Verified_Accounts" class="two">
+					<div class="container">
+
+
+						<header>
+							<h2>Verified Accounts</h2>
+						</header>
+
+
+						<form action= "query9.html" target="_blank">
+							<input type="submit" value="Verified Users" />
+						</form>
+
+					</div>
+				</section>
+
+				<section id="Top_Retweets" class="five">
+					<div class="container">
+
+
+						<header>
+							<h2>Top Tweeted Users</h2>
+						</header>
+
+
+						<form action= "query10.html" target="_blank">
+							<input type="submit" value="Top Tweeted Users" />
+						</form>
+
+					</div>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollzer.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

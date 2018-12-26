@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Top Tweeted Users</title>
+<h2 align="center"> Top Tweeted Users</h2>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+<script src="Highcharts-5.0.4/code/highcharts.js"></script>
+<script src="Highcharts-5.0.4/code/modules/exporting.js"></script>
+<script src="Highcharts-5.0.4/code/modules/export-data.js"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+
+
+
+<script type="text/javascript">
+
+    Highcharts.chart('container', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: 0,
+            plotShadow: false
+        },
+        title: {
+            text: 'Top<br>Tweeted<br>Users',
+            align: 'center',
+            verticalAlign: 'middle',
+            y: 40
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                dataLabels: {
+                    enabled: true,
+                    distance: -50,
+                    style: {
+                        fontWeight: 'bold',
+                        color: 'white'
+                    }
+                },
+                startAngle: -90,
+                endAngle: 90,
+                center: ['50%', '75%']
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Top Retweet Users',
+            innerSize: '50%',
+            data: [
+                ['Navdeepsinghja1', 48],
+                ['ShanuKumarVerm2', 32],
+                ['madridistajaggu', 28],
+                ['SunRisers', 28],
+                ['The_Super_Sid', 27],
+                ['Mon1sh', 26]
+                ['PSL_Tigers', 26]
+
+            ]
+        }]
+    });
+
+
+</script>
+</body>
+</html>

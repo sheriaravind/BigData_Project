@@ -1,0 +1,33 @@
+Hashtags:
+
+val sql8 = spark.sql("SELECT LOWER(hashtags.text) As Hashtags, COUNT(*) AS total_count FROM tb1 LATERAL VIEW EXPLODE(entities.hashtags) t1 AS hashtags GROUP BY LOWER(hashtags.text) ORDER BY total_count DESC LIMIT 20")
+ 
+ sql8.show()
+
+ -----------------------
+ 
+ Top langs:
+ 
+ var sqlDF = spark.sql("SELECT text from tb1 where user.verified=true AND lang="es") 
+
+-------------------------
+
+Retweet:
+
+val sql7 = spark.sql("SELECT retweeted_status.id, retweeted_status.text, COUNT(*) as total FROM tb1 WHERE retweeted_status.user is not null GROUP BY retweeted_status.id, retweeted_status.text ORDER BY total desc LIMIT 5")
+   
+---------------------------
+
+Timezone:
+
+val sql5 = spark.sql("SELECT user.time_zone, COUNT(*) AS total_count FROM tb1 WHERE user.time_zone IS NOT NULL GROUP BY user.time_zone ORDER BY total_count DESC LIMIT 50")
+
+
+----------------------------
+
+Tweets source:
+
+val sql4 = spark.sql("SELECT sum(case when lower(source) like '%android%' then 1 else 0 end)android, sum(case when lower(source) like '%iphone%' then 1 else 0 end)iphone, sum(case when lower(source) like '%ipad%' then 1 else 0 end)ipad, sum(case when lower(source) like '%web%' then 1 else 0 end)web, sum(case when lower(source) like '%tweetdeck%' then 1 else 0 end)Tweetdeck, sum(case when lower(source) like '%tweetbot%' then 1 else 0 end)Tweetbot, sum(case when lower(source) like '%www.sprinklr.com%' then 1 else 0 end)Sprinklr, sum(case when lower(source) like '%www.socialnewsdesk.com%' then 1 else 0 end)SocialNewsDesk, sum(case when lower(source) like '%instagram.com%' then 1 else 0 end)Instagram, sum(case when lower(source) like '%facebook.com%' then 1 else 0 end)Facebook from tb1")
+sql4.show()
+
+-------------------------
